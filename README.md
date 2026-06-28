@@ -23,7 +23,7 @@ Kpopcoin is a digital currency derived from **Bitcoin Core (v31.99.0-3704fcff583
 
 First, set up the node software to participate in the network and manage your wallet.
 
-* **Download:** [Download the node software here]([https://github.com/kpopcoin-official/kpopcoin])
+* **Download:** [Download the node software here](https://github.com/kpopcoin-official/kpopcoin)
 * **Extract:** Extract the downloaded archive.
 * **Configuration:** Copy the `kpopcoin.conf` file into the `~/.kpopcoin/` directory. (This applies the necessary network connection settings.)
 * **Run `./bitcoind`:** Starts the background program that synchronizes your node with the Kpopcoin network.
