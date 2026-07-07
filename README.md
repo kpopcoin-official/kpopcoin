@@ -1,3 +1,5 @@
+**The genesis block mining for Kpopcoin will officially begin on Tuesday, June 30, 2026, at 13:00 UTC.**
+
 **License**
 This project is based on Bitcoin Core and is released under the MIT License. 
 Copyright (c) 2009-2026 Bitcoin Core Developers.
