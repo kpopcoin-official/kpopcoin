@@ -1,5 +1,5 @@
 # bash programmable completion for kpopcoin-tx(1)
-# Copyright (c) 2016-present The Kpopcoin Core developers
+# Copyright (c) 2016-present The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

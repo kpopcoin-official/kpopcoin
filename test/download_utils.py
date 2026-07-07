@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (c) The Kpopcoin Core developers
+# Copyright (c) The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/license/mit/.
 

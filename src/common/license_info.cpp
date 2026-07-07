@@ -1,4 +1,4 @@
-// Copyright (c) The Kpopcoin Core developers
+// Copyright (c) The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://opensource.org/license/mit/.
 
@@ -18,7 +18,7 @@ std::string CopyrightHolders(const std::string& strPrefix)
 
     // Make sure Kpopcoin Core copyright is not removed by accident
     if (copyright_devs.find("Kpopcoin Core") == std::string::npos) {
-        strCopyrightHolders += "\n" + strPrefix + "The Kpopcoin Core developers";
+        strCopyrightHolders += "\n" + strPrefix + "The Bitcoin Core developers";
     }
     return strCopyrightHolders;
 }
