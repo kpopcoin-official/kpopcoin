@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) The Bitcoin Core developers
+# Copyright (c) The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,7 +15,7 @@ from test_framework.p2p import (
     P2P_SUBVERSION,
     P2P_VERSION_RELAY,
 )
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import KpopcoinTestFramework
 from test_framework.util import assert_equal
 
 # Pre-BIP434 protocol version
@@ -83,7 +83,7 @@ class FeaturePeerNoVerack(FeaturePeer):
         self.relay = message.relay
 
 
-class P2PBIP434FeatureTest(BitcoinTestFramework):
+class P2PBIP434FeatureTest(KpopcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         # peertimeout=999 prevents the node from kicking the peer for being idle

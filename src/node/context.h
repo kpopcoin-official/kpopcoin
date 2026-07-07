@@ -1,9 +1,9 @@
-// Copyright (c) 2019-present The Bitcoin Core developers
+// Copyright (c) 2019-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_CONTEXT_H
-#define BITCOIN_NODE_CONTEXT_H
+#ifndef KPOPCOIN_NODE_CONTEXT_H
+#define KPOPCOIN_NODE_CONTEXT_H
 
 #include <node/mining_types.h>
 
@@ -57,7 +57,7 @@ class Warnings;
 //! any member functions. It should just be a collection of references that can
 //! be used without pulling in unwanted dependencies or functionality.
 struct NodeContext {
-    //! libbitcoin_kernel context
+    //! libkpopcoin_kernel context
     std::unique_ptr<kernel::Context> kernel;
     std::unique_ptr<ECC_Context> ecc_context;
     //! Init interface for initializing current process and connecting to other processes.
@@ -86,7 +86,7 @@ struct NodeContext {
     //! Mining options used to create block templates. This value member is an
     //! exception to the dependency guidance above because BlockCreateOptions is
     //! a minimal dependency. It could be moved to the BlockTemplateCache
-    //! proposed in bitcoin/bitcoin#33421.
+    //! proposed in kpopcoin/kpopcoin#33421.
     BlockCreateOptions mining_args;
     interfaces::WalletLoader* wallet_loader{nullptr};
     std::unique_ptr<CScheduler> scheduler;
@@ -108,4 +108,4 @@ struct NodeContext {
 };
 } // namespace node
 
-#endif // BITCOIN_NODE_CONTEXT_H
+#endif // KPOPCOIN_NODE_CONTEXT_H

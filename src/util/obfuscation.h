@@ -1,9 +1,9 @@
-// Copyright (c) 2025-present The Bitcoin Core developers
+// Copyright (c) 2025-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_OBFUSCATION_H
-#define BITCOIN_UTIL_OBFUSCATION_H
+#ifndef KPOPCOIN_UTIL_OBFUSCATION_H
+#define KPOPCOIN_UTIL_OBFUSCATION_H
 
 #include <crypto/hex_base.h>
 #include <span.h>
@@ -113,4 +113,4 @@ private:
     }
 };
 
-#endif // BITCOIN_UTIL_OBFUSCATION_H
+#endif // KPOPCOIN_UTIL_OBFUSCATION_H

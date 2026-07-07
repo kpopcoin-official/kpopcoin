@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -178,7 +178,7 @@ static RPCMethod getprivatebroadcastinfo()
             const NodeContext& node{EnsureAnyNodeContext(request.context)};
             const PeerManager& peerman{EnsurePeerman(node)};
             if (!peerman.GetInfo().private_broadcast) {
-                throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Private broadcast is not enabled. Ensure you're running Bitcoin Core with -privatebroadcast=1.");
+                throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Private broadcast is not enabled. Ensure you're running Kpopcoin Core with -privatebroadcast=1.");
             }
 
             const auto txs{peerman.GetPrivateBroadcastInfo()};
@@ -246,7 +246,7 @@ static RPCMethod abortprivatebroadcast()
             const NodeContext& node{EnsureAnyNodeContext(request.context)};
             PeerManager& peerman{EnsurePeerman(node)};
             if (!peerman.GetInfo().private_broadcast) {
-                throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Private broadcast is not enabled. Ensure you're running Bitcoin Core with -privatebroadcast=1.");
+                throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Private broadcast is not enabled. Ensure you're running Kpopcoin Core with -privatebroadcast=1.");
             }
 
             const uint256 id{ParseHashV(self.Arg<UniValue>("id"), "id")};

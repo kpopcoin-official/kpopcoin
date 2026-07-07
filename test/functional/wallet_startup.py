@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-present The Bitcoin Core developers
+# Copyright (c) 2017-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test wallet load on startup.
 
-Verify that a bitcoind node can maintain list of wallets loading on startup
+Verify that a kpopcoind node can maintain list of wallets loading on startup
 """
 import os
 import shutil
@@ -12,7 +12,7 @@ import stat
 import uuid
 
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import KpopcoinTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -20,7 +20,7 @@ from test_framework.util import (
 )
 
 
-class WalletStartupTest(BitcoinTestFramework):
+class WalletStartupTest(KpopcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

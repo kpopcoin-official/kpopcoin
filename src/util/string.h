@@ -1,9 +1,9 @@
-// Copyright (c) 2019-present The Bitcoin Core developers
+// Copyright (c) 2019-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_STRING_H
-#define BITCOIN_UTIL_STRING_H
+#ifndef KPOPCOIN_UTIL_STRING_H
+#define KPOPCOIN_UTIL_STRING_H
 
 #include <algorithm>
 #include <array>
@@ -304,4 +304,4 @@ struct LineReader {
 };
 } // namespace util
 
-#endif // BITCOIN_UTIL_STRING_H
+#endif // KPOPCOIN_UTIL_STRING_H

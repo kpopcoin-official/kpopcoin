@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this software; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-"""HTTP proxy for opening RPC connection to bitcoind.
+"""HTTP proxy for opening RPC connection to kpopcoind.
 
 AuthServiceProxy has the following improvements over python-jsonrpc's
 ServiceProxy class:
@@ -49,7 +49,7 @@ from .util import JSONRPCException, assert_equal
 HTTP_TIMEOUT = 30
 USER_AGENT = "AuthServiceProxy/0.1"
 
-log = logging.getLogger("BitcoinRPC")
+log = logging.getLogger("KpopcoinRPC")
 
 def serialization_fallback(o):
     if isinstance(o, decimal.Decimal):

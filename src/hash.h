@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_HASH_H
-#define BITCOIN_HASH_H
+#ifndef KPOPCOIN_HASH_H
+#define KPOPCOIN_HASH_H
 
 #include <attributes.h>
 #include <crypto/common.h>
@@ -28,7 +28,7 @@ public:
     ~ChainCode() { memory_cleanse(data(), size()); }
 };
 
-/** A hasher class for Bitcoin's 256-bit hash (double SHA-256). */
+/** A hasher class for Kpopcoin's 256-bit hash (double SHA-256). */
 class CHash256 {
 private:
     CSHA256 sha;
@@ -53,7 +53,7 @@ public:
     }
 };
 
-/** A hasher class for Bitcoin's 160-bit hash (SHA-256 + RIPEMD-160). */
+/** A hasher class for Kpopcoin's 160-bit hash (SHA-256 + RIPEMD-160). */
 class CHash160 {
 private:
     CSHA256 sha;
@@ -234,4 +234,4 @@ inline uint160 RIPEMD160(std::span<const unsigned char> data)
     return result;
 }
 
-#endif // BITCOIN_HASH_H
+#endif // KPOPCOIN_HASH_H

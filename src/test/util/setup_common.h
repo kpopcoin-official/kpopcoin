@@ -1,9 +1,9 @@
-// Copyright (c) 2015-present The Bitcoin Core developers
+// Copyright (c) 2015-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_SETUP_COMMON_H
-#define BITCOIN_TEST_UTIL_SETUP_COMMON_H
+#ifndef KPOPCOIN_TEST_UTIL_SETUP_COMMON_H
+#define KPOPCOIN_TEST_UTIL_SETUP_COMMON_H
 
 #include <common/args.h> // IWYU pragma: export
 #include <consensus/amount.h>
@@ -87,7 +87,7 @@ struct BasicTestingSetup {
      * compatibility. In the future, it will point to m_args to further isolate
      * test environments.
      *
-     * @see https://github.com/bitcoin/bitcoin/issues/25055 for additional context.
+     * @see https://github.com/kpopcoin/kpopcoin/issues/25055 for additional context.
      */
     ArgsManager m_args;
 };
@@ -251,4 +251,4 @@ std::unique_ptr<T> MakeNoLogFileContext(const ChainType chain_type = ChainType::
 
 CBlock getBlock13b8a();
 
-#endif // BITCOIN_TEST_UTIL_SETUP_COMMON_H
+#endif // KPOPCOIN_TEST_UTIL_SETUP_COMMON_H

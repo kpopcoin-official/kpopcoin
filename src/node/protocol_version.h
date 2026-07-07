@@ -1,9 +1,9 @@
-// Copyright (c) 2012-present The Bitcoin Core developers
+// Copyright (c) 2012-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_PROTOCOL_VERSION_H
-#define BITCOIN_NODE_PROTOCOL_VERSION_H
+#ifndef KPOPCOIN_NODE_PROTOCOL_VERSION_H
+#define KPOPCOIN_NODE_PROTOCOL_VERSION_H
 
 /**
  * network protocol versioning
@@ -38,4 +38,4 @@ static const int WTXID_RELAY_VERSION = 70016;
 //! "feature" message type for feature negotiation starts with this version
 static const int FEATURE_VERSION = 70017;
 
-#endif // BITCOIN_NODE_PROTOCOL_VERSION_H
+#endif // KPOPCOIN_NODE_PROTOCOL_VERSION_H

@@ -1,33 +1,33 @@
-# Support for signing transactions outside of Bitcoin Core
+# Support for signing transactions outside of Kpopcoin Core
 
-Bitcoin Core can be launched with `-signer=<cmd>` where `<cmd>` is an external tool which can sign transactions and perform other functions. For example, it can be used to communicate with a hardware wallet.
+Kpopcoin Core can be launched with `-signer=<cmd>` where `<cmd>` is an external tool which can sign transactions and perform other functions. For example, it can be used to communicate with a hardware wallet.
 
-Interaction with external signer uses [Partially Signed Bitcoin Transaction (PSBT)](psbt.md).
+Interaction with external signer uses [Partially Signed Kpopcoin Transaction (PSBT)](psbt.md).
 
 ## Example usage
 
-The following example is based on the [HWI](https://github.com/bitcoin-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the Bitcoin Core GitHub organization and maintained by Bitcoin Core developers, it should be used with caution. It is considered experimental and has far less review than Bitcoin Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
+The following example is based on the [HWI](https://github.com/kpopcoin-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the Kpopcoin Core GitHub organization and maintained by Kpopcoin Core developers, it should be used with caution. It is considered experimental and has far less review than Kpopcoin Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
 
-When using a hardware wallet, consult the manufacturer website for (alternative) software they recommend. As long as their software conforms to the standard below, it should be able to work with Bitcoin Core.
+When using a hardware wallet, consult the manufacturer website for (alternative) software they recommend. As long as their software conforms to the standard below, it should be able to work with Kpopcoin Core.
 
-Start Bitcoin Core:
+Start Kpopcoin Core:
 
 ```sh
-bitcoind -signer=../HWI/hwi.py
+kpopcoind -signer=../HWI/hwi.py
 ```
 
-`bitcoin node` can also be substituted for `bitcoind`.
+`kpopcoin node` can also be substituted for `kpopcoind`.
 
 ### Device setup
 
-Follow the hardware manufacturers instructions for the initial device setup, as well as their instructions for creating a backup. Alternatively, for some devices, you can use the `setup`, `restore` and `backup` commands provided by [HWI](https://github.com/bitcoin-core/HWI).
+Follow the hardware manufacturers instructions for the initial device setup, as well as their instructions for creating a backup. Alternatively, for some devices, you can use the `setup`, `restore` and `backup` commands provided by [HWI](https://github.com/kpopcoin-core/HWI).
 
 ### Create wallet and import keys
 
 Get a list of signing devices / services:
 
 ```sh
-bitcoin-cli enumeratesigners
+kpopcoin-cli enumeratesigners
 ```
 
 ```
@@ -46,31 +46,31 @@ The master key fingerprint is used to identify a device.
 Create a wallet, this automatically imports the public keys:
 
 ```sh
-bitcoin rpc createwallet wallet_name="hww2" disable_private_keys=true descriptors=true external_signer=true
+kpopcoin rpc createwallet wallet_name="hww2" disable_private_keys=true descriptors=true external_signer=true
 ```
 
-Creation of the external wallet can be confirmed with `getwalletinfo`, which will report `"external_signer": true`. These commands can also be executed using `bitcoin-qt` Debug Console instead of using `bitcoin rpc` or `bitcoin-cli`.
+Creation of the external wallet can be confirmed with `getwalletinfo`, which will report `"external_signer": true`. These commands can also be executed using `kpopcoin-qt` Debug Console instead of using `kpopcoin rpc` or `kpopcoin-cli`.
 
 ### Verify an address
 
 Display an address on the device:
 
 ```sh
-bitcoin-cli -rpcwallet=<walletname> getnewaddress
-bitcoin-cli -rpcwallet=<walletname> walletdisplayaddress <address>
+kpopcoin-cli -rpcwallet=<walletname> getnewaddress
+kpopcoin-cli -rpcwallet=<walletname> walletdisplayaddress <address>
 ```
 
 Replace `<address>` with the result of `getnewaddress`.
 
 ### Spending
 
-Under the hood this uses a [PSBT (Partially Signed Bitcoin Transaction)](psbt.md).
+Under the hood this uses a [PSBT (Partially Signed Kpopcoin Transaction)](psbt.md).
 
 ```sh
-bitcoin-cli -rpcwallet=<walletname> sendtoaddress <address> <amount>
+kpopcoin-cli -rpcwallet=<walletname> sendtoaddress <address> <amount>
 ```
 
-This constructs a PSBT and prompts your external signer to sign (will fail if it's not connected). If successful, Bitcoin Core finalizes and broadcasts the transaction.
+This constructs a PSBT and prompts your external signer to sign (will fail if it's not connected). If successful, Kpopcoin Core finalizes and broadcasts the transaction.
 
 ```
 {"complete": true, "txid": "<txid>"}
@@ -78,11 +78,11 @@ This constructs a PSBT and prompts your external signer to sign (will fail if it
 
 ## Signer API
 
-In order to be compatible with Bitcoin Core, any signer command should conform to the specification below. This specification is subject to change. Ideally a BIP should propose a standard so that other wallets can also make use of it.
+In order to be compatible with Kpopcoin Core, any signer command should conform to the specification below. This specification is subject to change. Ideally a BIP should propose a standard so that other wallets can also make use of it.
 
 Prerequisite knowledge:
 * [Output Descriptors](descriptors.md)
-* Partially Signed Bitcoin Transaction ([PSBT](psbt.md))
+* Partially Signed Kpopcoin Transaction ([PSBT](psbt.md))
 
 ### Flag `--chain <name>` (required)
 
@@ -202,7 +202,7 @@ If `<descriptor>` contains an xpub, the command MUST fail if it does not match t
 
 The command MAY complain if `--chain` is set to a test-network, but the BIP32 coin-type is not `1h` (and vice versa).
 
-## How Bitcoin Core uses the Signer API
+## How Kpopcoin Core uses the Signer API
 
 The `enumeratesigners` RPC simply calls `<cmd> enumerate`.
 
@@ -214,6 +214,6 @@ It then imports descriptors for all supported address types, in a BIP44/49/84/86
 
 The `walletdisplayaddress` RPC reuses some code from `getaddressinfo` on the provided address and obtains the inferred descriptor. It then calls `<cmd> --fingerprint=00000000 displayaddress --desc=<descriptor>`.
 
-For external-signer wallets, spending uses `send` or `sendall`. Bitcoin Core builds a PSBT, calls the signer via stdin with `signtx`, and if signatures are sufficient, finalizes and broadcasts the transaction. If the signer is not connected or cancels, the call fails with an error. For fee-bumping on such wallets, use `psbtbumpfee` to involve an external signer.
+For external-signer wallets, spending uses `send` or `sendall`. Kpopcoin Core builds a PSBT, calls the signer via stdin with `signtx`, and if signatures are sufficient, finalizes and broadcasts the transaction. If the signer is not connected or cancels, the call fails with an error. For fee-bumping on such wallets, use `psbtbumpfee` to involve an external signer.
 
 `sendtoaddress` and `sendmany` check `inputs->bip32_derivs` to see if any inputs have the same `master_fingerprint` as the signer. If so, it calls `<cmd> --fingerprint=00000000 signtransaction <psbt>`. It waits for the device to return a (partially) signed psbt, tries to finalize it and broadcasts the transaction.

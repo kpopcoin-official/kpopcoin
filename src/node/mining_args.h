@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_MINING_ARGS_H
-#define BITCOIN_NODE_MINING_ARGS_H
+#ifndef KPOPCOIN_NODE_MINING_ARGS_H
+#define KPOPCOIN_NODE_MINING_ARGS_H
 
 #include <node/mining_types.h>
 #include <util/result.h>
@@ -34,4 +34,4 @@ static const bool DEFAULT_PRINT_MODIFIED_FEE = false;
 
 } // namespace node
 
-#endif // BITCOIN_NODE_MINING_ARGS_H
+#endif // KPOPCOIN_NODE_MINING_ARGS_H

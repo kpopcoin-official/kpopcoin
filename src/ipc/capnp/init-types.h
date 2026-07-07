@@ -1,12 +1,12 @@
-// Copyright (c) 2021-present The Bitcoin Core developers
+// Copyright (c) 2021-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_IPC_CAPNP_INIT_TYPES_H
-#define BITCOIN_IPC_CAPNP_INIT_TYPES_H
+#ifndef KPOPCOIN_IPC_CAPNP_INIT_TYPES_H
+#define KPOPCOIN_IPC_CAPNP_INIT_TYPES_H
 
 #include <ipc/capnp/echo.capnp.proxy-types.h>
 #include <ipc/capnp/mining.capnp.proxy-types.h>
 #include <ipc/capnp/rpc.capnp.proxy-types.h>
 
-#endif // BITCOIN_IPC_CAPNP_INIT_TYPES_H
+#endif // KPOPCOIN_IPC_CAPNP_INIT_TYPES_H

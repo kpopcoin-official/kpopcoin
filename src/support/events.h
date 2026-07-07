@@ -1,9 +1,9 @@
-// Copyright (c) 2016-present The Bitcoin Core developers
+// Copyright (c) 2016-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SUPPORT_EVENTS_H
-#define BITCOIN_SUPPORT_EVENTS_H
+#ifndef KPOPCOIN_SUPPORT_EVENTS_H
+#define KPOPCOIN_SUPPORT_EVENTS_H
 
 #include <ios>
 #include <memory>
@@ -40,4 +40,4 @@ inline raii_evhttp obtain_evhttp(struct event_base* base) {
     return raii_evhttp(evhttp_new(base));
 }
 
-#endif // BITCOIN_SUPPORT_EVENTS_H
+#endif // KPOPCOIN_SUPPORT_EVENTS_H

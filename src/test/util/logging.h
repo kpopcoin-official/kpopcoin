@@ -1,9 +1,9 @@
-// Copyright (c) 2019-present The Bitcoin Core developers
+// Copyright (c) 2019-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_LOGGING_H
-#define BITCOIN_TEST_UTIL_LOGGING_H
+#ifndef KPOPCOIN_TEST_UTIL_LOGGING_H
+#define KPOPCOIN_TEST_UTIL_LOGGING_H
 
 #include <util/macros.h>
 
@@ -39,6 +39,6 @@ private:
     MatchFn m_match;
 };
 
-#define ASSERT_DEBUG_LOG(message) DebugLogHelper BITCOIN_UNIQUE_NAME(debugloghelper)(message)
+#define ASSERT_DEBUG_LOG(message) DebugLogHelper KPOPCOIN_UNIQUE_NAME(debugloghelper)(message)
 
-#endif // BITCOIN_TEST_UTIL_LOGGING_H
+#endif // KPOPCOIN_TEST_UTIL_LOGGING_H

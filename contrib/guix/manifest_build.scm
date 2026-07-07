@@ -113,14 +113,14 @@ chain for " target " development."))
 
 (define base-linux-kernel-headers linux-libre-headers-6.1)
 
-(define* (make-bitcoin-cross-toolchain target
+(define* (make-kpopcoin-cross-toolchain target
                                        #:key
                                        (base-gcc-for-libc linux-base-gcc)
                                        (base-kernel-headers base-linux-kernel-headers)
                                        (base-libc glibc-2.31)
                                        (base-gcc linux-base-gcc))
   "Convenience wrapper around MAKE-CROSS-TOOLCHAIN with default values
-desirable for building Bitcoin Core release binaries."
+desirable for building Kpopcoin Core release binaries."
   (make-cross-toolchain target
                         base-gcc-for-libc
                         base-kernel-headers
@@ -292,7 +292,7 @@ chain for " target " development."))
            (list bison
                  pkg-config
                  (list gcc-toolchain-14 "static")
-                 (make-bitcoin-cross-toolchain target)))
+                 (make-kpopcoin-cross-toolchain target)))
           ((string-contains target "darwin")
            (list clang-toolchain-19
                  lld-19

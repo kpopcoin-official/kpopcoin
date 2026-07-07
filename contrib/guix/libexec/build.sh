@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (c) 2019-present The Bitcoin Core developers
+# Copyright (c) 2019-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 export LC_ALL=C
@@ -168,7 +168,7 @@ mkdir -p "$DISTSRC"
           ${CONFIGFLAGS} \
           ${CMAKE_EXE_LINKER_FLAGS+"$CMAKE_EXE_LINKER_FLAGS"}
 
-    # Build Bitcoin Core
+    # Build Kpopcoin Core
     cmake --build build -j "$JOBS"
 
     mkdir -p "$OUTDIR"
@@ -177,15 +177,15 @@ mkdir -p "$DISTSRC"
     case "$HOST" in
         *mingw*)
             cmake --build build -j "$JOBS" -t deploy
-            mv build/bitcoin-win64-setup.exe "${OUTDIR}/${DISTNAME}-win64-setup-unsigned.exe"
+            mv build/kpopcoin-win64-setup.exe "${OUTDIR}/${DISTNAME}-win64-setup-unsigned.exe"
             ;;
     esac
 
-    # Setup the directory where our Bitcoin Core build for HOST will be
+    # Setup the directory where our Kpopcoin Core build for HOST will be
     # installed. This directory will also later serve as the input for our
     # binary tarballs.
     mkdir -p "${INSTALLPATH}"
-    # Install built Bitcoin Core to $INSTALLPATH
+    # Install built Kpopcoin Core to $INSTALLPATH
     case "$HOST" in
         *darwin*)
             cmake --install build --strip --prefix "${INSTALLPATH}"

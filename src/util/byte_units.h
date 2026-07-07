@@ -1,9 +1,9 @@
-// Copyright (c) 2025-present The Bitcoin Core developers
+// Copyright (c) 2025-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_BYTE_UNITS_H
-#define BITCOIN_UTIL_BYTE_UNITS_H
+#ifndef KPOPCOIN_UTIL_BYTE_UNITS_H
+#define KPOPCOIN_UTIL_BYTE_UNITS_H
 
 #include <util/overflow.h>
 
@@ -34,4 +34,4 @@ consteval uint64_t operator""_GiB(unsigned long long gibibytes)
     return util::detail::ByteUnitsToBytes<30>(gibibytes);
 }
 
-#endif // BITCOIN_UTIL_BYTE_UNITS_H
+#endif // KPOPCOIN_UTIL_BYTE_UNITS_H

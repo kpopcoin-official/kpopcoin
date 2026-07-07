@@ -1,17 +1,17 @@
-Bitcoin Core
+Kpopcoin Core
 =============
 
-Below are notes on installing Bitcoin Core software on Linux systems.
+Below are notes on installing Kpopcoin Core software on Linux systems.
 
 General Runtime Requirements
 ----------------------------
 
-Bitcoin Core requires glibc (GNU C Library) 2.31 or newer.
+Kpopcoin Core requires glibc (GNU C Library) 2.31 or newer.
 
 GUI Runtime Requirements
 ------------------------
 
-The GUI executable, `bitcoin-qt`, is based on the Qt 6 framework and uses the `xcb` QPA (Qt Platform Abstraction) platform plugin
+The GUI executable, `kpopcoin-qt`, is based on the Qt 6 framework and uses the `xcb` QPA (Qt Platform Abstraction) platform plugin
 to run on X11. Its runtime library dependencies are as follows:
 - `libfontconfig`
 - `libfreetype`

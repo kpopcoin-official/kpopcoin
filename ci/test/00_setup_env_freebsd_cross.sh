@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) The Bitcoin Core developers
+# Copyright (c) The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/license/mit.
 
@@ -14,7 +14,7 @@ export PACKAGES="clang-${APT_LLVM_V} llvm-${APT_LLVM_V} lld"
 export HOST=x86_64-unknown-freebsd
 export DEP_OPTS="build_CC=clang build_CXX=clang++ AR=llvm-ar-${APT_LLVM_V} STRIP=llvm-strip-${APT_LLVM_V} NM=llvm-nm-${APT_LLVM_V} RANLIB=llvm-ranlib-${APT_LLVM_V}"
 export GOAL="install"
-export BITCOIN_CONFIG="\
+export KPOPCOIN_CONFIG="\
  --preset=dev-mode \
  -DREDUCE_EXPORTS=ON \
  -DWITH_USDT=OFF \

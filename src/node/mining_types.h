@@ -1,4 +1,4 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,8 +8,8 @@
 //! Avoid declaring functions or classes with methods here unless they are
 //! header-only or provided by the util library.
 
-#ifndef BITCOIN_NODE_MINING_TYPES_H
-#define BITCOIN_NODE_MINING_TYPES_H
+#ifndef KPOPCOIN_NODE_MINING_TYPES_H
+#define KPOPCOIN_NODE_MINING_TYPES_H
 
 #include <consensus/amount.h>
 #include <policy/feerate.h>
@@ -175,4 +175,4 @@ struct CoinbaseTx {
 
 } // namespace node
 
-#endif // BITCOIN_NODE_MINING_TYPES_H
+#endif // KPOPCOIN_NODE_MINING_TYPES_H

@@ -1,17 +1,17 @@
-// Copyright (c) 2010-present The Bitcoin Core developers
+// Copyright (c) 2010-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 //! @file common/types.h is a home for simple enum and struct type definitions
-//! that can be used internally by functions in the libbitcoin_common library,
+//! that can be used internally by functions in the libkpopcoin_common library,
 //! but also used externally by node, wallet, and GUI code.
 //!
 //! This file is intended to define only simple types that do not have external
 //! dependencies. More complicated types should be defined in dedicated header
 //! files.
 
-#ifndef BITCOIN_COMMON_TYPES_H
-#define BITCOIN_COMMON_TYPES_H
+#ifndef KPOPCOIN_COMMON_TYPES_H
+#define KPOPCOIN_COMMON_TYPES_H
 
 #include <optional>
 
@@ -53,4 +53,4 @@ struct PSBTFillOptions {
 
 } // namespace common
 
-#endif // BITCOIN_COMMON_TYPES_H
+#endif // KPOPCOIN_COMMON_TYPES_H

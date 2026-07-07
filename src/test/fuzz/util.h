@@ -1,9 +1,9 @@
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_FUZZ_UTIL_H
-#define BITCOIN_TEST_FUZZ_UTIL_H
+#ifndef KPOPCOIN_TEST_FUZZ_UTIL_H
+#define KPOPCOIN_TEST_FUZZ_UTIL_H
 
 #include <addresstype.h>
 #include <arith_uint256.h>
@@ -367,4 +367,4 @@ inline void FinalizeHeader(CBlockHeader& header, const ChainstateManager& chainm
     }
 }
 
-#endif // BITCOIN_TEST_FUZZ_UTIL_H
+#endif // KPOPCOIN_TEST_FUZZ_UTIL_H

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-present The Bitcoin Core developers
+# Copyright (c) 2017-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """
@@ -32,7 +32,7 @@ from test_framework.socks5 import (
     start_socks5_server,
 )
 from test_framework.test_framework import (
-    BitcoinTestFramework,
+    KpopcoinTestFramework,
 )
 from test_framework.util import (
     assert_equal,
@@ -49,7 +49,7 @@ P2P_PRIVATE_VERSION = 70016
 NUM_PRIVATE_BROADCAST_PER_TX = 3
 
 
-class P2PPrivateBroadcast(BitcoinTestFramework):
+class P2PPrivateBroadcast(KpopcoinTestFramework):
     def set_test_params(self):
         self.disable_autoconnect = False
         self.num_nodes = 2
@@ -224,9 +224,9 @@ class P2PPrivateBroadcast(BitcoinTestFramework):
         far_observer = tx_receiver.add_p2p_connection(P2PInterface())
 
         self.log.info("Test getprivatebroadcastinfo and abortprivatebroadcast fails if the node is running without -privatebroadcast set")
-        assert_raises_rpc_error(-32601, "Private broadcast is not enabled. Ensure you're running Bitcoin Core with -privatebroadcast=1.",
+        assert_raises_rpc_error(-32601, "Private broadcast is not enabled. Ensure you're running Kpopcoin Core with -privatebroadcast=1.",
             tx_receiver.getprivatebroadcastinfo)
-        assert_raises_rpc_error(-32601, "Private broadcast is not enabled. Ensure you're running Bitcoin Core with -privatebroadcast=1.",
+        assert_raises_rpc_error(-32601, "Private broadcast is not enabled. Ensure you're running Kpopcoin Core with -privatebroadcast=1.",
             tx_receiver.abortprivatebroadcast, "00" * 32)
 
         self.fill_node_addrman(node_index=0, address_types_to_add=[CAddress.NET_IPV4, CAddress.NET_IPV6, CAddress.NET_TORV3, CAddress.NET_I2P, CAddress.NET_CJDNS])
@@ -379,7 +379,7 @@ class P2PPrivateBroadcast(BitcoinTestFramework):
             "0" * 64,
         )
 
-        # Stop the SOCKS5 proxy server to avoid it being upset by the bitcoin
+        # Stop the SOCKS5 proxy server to avoid it being upset by the kpopcoin
         # node disconnecting in the middle of the SOCKS5 handshake when we
         # restart below.
         self.socks5_server.stop()
@@ -389,7 +389,7 @@ class P2PPrivateBroadcast(BitcoinTestFramework):
             "-privatebroadcast",
             "-v2transport=0",
             # A location where definitely a Tor control is not listening. This would allow
-            # Bitcoin Core to start, hoping/assuming that the location of the Tor proxy
+            # Kpopcoin Core to start, hoping/assuming that the location of the Tor proxy
             # may be retrieved after startup from the Tor control, but it will not be, so
             # the RPC should throw.
             "-torcontrol=127.0.0.1:1",

@@ -1,9 +1,9 @@
-// Copyright (c) 2023-present The Bitcoin Core developers
+// Copyright (c) 2023-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_KERNEL_NOTIFICATIONS_H
-#define BITCOIN_NODE_KERNEL_NOTIFICATIONS_H
+#ifndef KPOPCOIN_NODE_KERNEL_NOTIFICATIONS_H
+#define KPOPCOIN_NODE_KERNEL_NOTIFICATIONS_H
 
 #include <kernel/notifications_interface.h>
 
@@ -90,4 +90,4 @@ void ReadNotificationArgs(const ArgsManager& args, KernelNotifications& notifica
 
 } // namespace node
 
-#endif // BITCOIN_NODE_KERNEL_NOTIFICATIONS_H
+#endif // KPOPCOIN_NODE_KERNEL_NOTIFICATIONS_H

@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SERIALIZE_H
-#define BITCOIN_SERIALIZE_H
+#ifndef KPOPCOIN_SERIALIZE_H
+#define KPOPCOIN_SERIALIZE_H
 
 #include <attributes.h>
 #include <compat/assumptions.h> // IWYU pragma: keep
@@ -1283,4 +1283,4 @@ public:
         return ParamsWrapper{*this, t};                                                  \
     }
 
-#endif // BITCOIN_SERIALIZE_H
+#endif // KPOPCOIN_SERIALIZE_H

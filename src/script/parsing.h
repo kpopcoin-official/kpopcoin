@@ -1,9 +1,9 @@
-// Copyright (c) 2018-present The Bitcoin Core developers
+// Copyright (c) 2018-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_SCRIPT_PARSING_H
-#define BITCOIN_SCRIPT_PARSING_H
+#ifndef KPOPCOIN_SCRIPT_PARSING_H
+#define KPOPCOIN_SCRIPT_PARSING_H
 
 #include <span>
 #include <string>
@@ -36,4 +36,4 @@ std::span<const char> Expr(std::span<const char>& sp);
 
 } // namespace script
 
-#endif // BITCOIN_SCRIPT_PARSING_H
+#endif // KPOPCOIN_SCRIPT_PARSING_H

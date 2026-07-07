@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2024-present The Bitcoin Core developers
+# Copyright (c) 2024-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +8,7 @@ import re
 from test_framework.descriptors import descsum_create
 from test_framework.key import H_POINT
 from test_framework.script import hash160
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import KpopcoinTestFramework
 from test_framework.util import (
     assert_equal,
     assert_greater_than,
@@ -22,7 +22,7 @@ MULTIPATH_TWO_RE = re.compile(r"<(\d+);(\d+)>")
 MUSIG_RE = re.compile(r"musig\((.*?)\)")
 PLACEHOLDER_RE = re.compile(r"\$\d")
 
-class WalletMuSigTest(BitcoinTestFramework):
+class WalletMuSigTest(KpopcoinTestFramework):
     wallet_num = 0
     def set_test_params(self):
         self.num_nodes = 1

@@ -1,9 +1,9 @@
-// Copyright (c) The Bitcoin Core developers
+// Copyright (c) The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_COMMON_H
-#define BITCOIN_TEST_UTIL_COMMON_H
+#ifndef KPOPCOIN_TEST_UTIL_COMMON_H
+#define KPOPCOIN_TEST_UTIL_COMMON_H
 
 #include <chrono>
 #include <optional>
@@ -59,4 +59,4 @@ inline std::ostream& operator<<(std::ostream& os, const T& obj)
 
 // @}
 
-#endif // BITCOIN_TEST_UTIL_COMMON_H
+#endif // KPOPCOIN_TEST_UTIL_COMMON_H

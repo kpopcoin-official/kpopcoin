@@ -1,12 +1,12 @@
-// Copyright (c) 2015-present The Bitcoin Core developers
+// Copyright (c) 2015-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef BITCOIN_TORCONTROL_H
-#define BITCOIN_TORCONTROL_H
+#ifndef KPOPCOIN_TORCONTROL_H
+#define KPOPCOIN_TORCONTROL_H
 
 #include <netaddress.h>
 #include <util/fs.h>
@@ -114,7 +114,7 @@ private:
     bool ProcessBuffer();
 };
 
-/****** Bitcoin specific TorController implementation ********/
+/****** Kpopcoin specific TorController implementation ********/
 
 /** Controller that connects to Tor control socket, authenticate, then create
  * and maintain an ephemeral onion service.
@@ -172,4 +172,4 @@ public:
     void disconnected_cb(TorControlConnection& conn);
 };
 
-#endif // BITCOIN_TORCONTROL_H
+#endif // KPOPCOIN_TORCONTROL_H

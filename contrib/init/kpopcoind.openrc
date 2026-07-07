@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+
+# backward compatibility for existing gentoo layout
+#
+if [ -d "/var/lib/kpopcoin/.kpopcoin" ]; then
+	KPOPCOIND_DEFAULT_DATADIR="/var/lib/kpopcoin/.kpopcoin"
+else
+	KPOPCOIND_DEFAULT_DATADIR="/var/lib/kpopcoind"
+fi
+
+KPOPCOIND_CONFIGFILE=${KPOPCOIND_CONFIGFILE:-/etc/kpopcoin/kpopcoin.conf}
+KPOPCOIND_PIDDIR=${KPOPCOIND_PIDDIR:-/var/run/kpopcoind}
+KPOPCOIND_PIDFILE=${KPOPCOIND_PIDFILE:-${KPOPCOIND_PIDDIR}/kpopcoind.pid}
+KPOPCOIND_DATADIR=${KPOPCOIND_DATADIR:-${KPOPCOIND_DEFAULT_DATADIR}}
+KPOPCOIND_USER=${KPOPCOIND_USER:-${KPOPCOIN_USER:-kpopcoin}}
+KPOPCOIND_GROUP=${KPOPCOIND_GROUP:-kpopcoin}
+KPOPCOIND_BIN=${KPOPCOIND_BIN:-/usr/bin/kpopcoind}
+KPOPCOIND_NICE=${KPOPCOIND_NICE:-${NICELEVEL:-0}}
+KPOPCOIND_OPTS="${KPOPCOIND_OPTS:-${KPOPCOIN_OPTS}}"
+
+name="Kpopcoin Core Daemon"
+description="Kpopcoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/kpopcoind"
+command_args="-pid=\"${KPOPCOIND_PIDFILE}\" \
+		-conf=\"${KPOPCOIND_CONFIGFILE}\" \
+		-datadir=\"${KPOPCOIND_DATADIR}\" \
+		-daemon \
+		${KPOPCOIND_OPTS}"
+
+required_files="${KPOPCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${KPOPCOIND_USER} \
+			-N ${KPOPCOIND_NICE} -w 2000"
+pidfile="${KPOPCOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${KPOPCOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${KPOPCOIND_USER}:${KPOPCOIND_GROUP}" \
+	"${KPOPCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${KPOPCOIND_USER}:${KPOPCOIND_GROUP}" \
+	"${KPOPCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o "${KPOPCOIND_USER}:${KPOPCOIND_GROUP}" \
+	-m 0660 \
+	"${KPOPCOIND_CONFIGFILE}"
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if grep -qs '^rpcuser=' "${KPOPCOIND_CONFIGFILE}" && \
+		! grep -qs '^rpcpassword=' "${KPOPCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run kpopcoind."
+		eerror "The setting must appear in ${KPOPCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Kpopcoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

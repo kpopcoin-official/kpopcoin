@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-present The Bitcoin Core developers
+# Copyright (c) 2018-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the Partially Signed Transaction RPCs.
@@ -46,7 +46,7 @@ from test_framework.psbt import (
 )
 from test_framework.script import CScript, OP_TRUE, SIGHASH_ALL, SIGHASH_ANYONECANPAY
 from test_framework.script_util import MIN_STANDARD_TX_NONWITNESS_SIZE
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import KpopcoinTestFramework
 from test_framework.util import (
     assert_not_equal,
     assert_approx,
@@ -67,7 +67,7 @@ import json
 import os
 
 
-class PSBTTest(BitcoinTestFramework):
+class PSBTTest(KpopcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 3
         self.extra_args = [
@@ -92,7 +92,7 @@ class PSBTTest(BitcoinTestFramework):
         tx.vin = [CTxIn(outpoint=COutPoint(hash=0, n=0))]
         tx.vout = [CTxOut(nValue=1, scriptPubKey=CScript([OP_TRUE]))]
 
-        # https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki#specification
+        # https://github.com/kpopcoin/bips/blob/master/bip-0174.mediawiki#specification
         psbt = PSBT()
         # global map
         psbt.g = PSBTMap({PSBT_GLOBAL_UNSIGNED_TX: tx.serialize()})

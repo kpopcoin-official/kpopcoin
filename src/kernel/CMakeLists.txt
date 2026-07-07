@@ -1,15 +1,15 @@
-# Copyright (c) 2024-present The Bitcoin Core developers
+# Copyright (c) 2024-present The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or https://opensource.org/license/mit/.
 
 include(GNUInstallDirs)
 
-# TODO: libbitcoinkernel is a work in progress consensus engine
+# TODO: libkpopcoinkernel is a work in progress consensus engine
 #       library, as more and more modules are decoupled from the
 #       consensus engine, this list will shrink to only those
 #       which are absolutely necessary.
-add_library(bitcoinkernel
-  bitcoinkernel.cpp
+add_library(kpopcoinkernel
+  kpopcoinkernel.cpp
   chain.cpp
   checks.cpp
   chainparams.cpp
@@ -76,8 +76,8 @@ add_library(bitcoinkernel
   ../validation.cpp
   ../validationinterface.cpp
   ../versionbits.cpp
-  $<TARGET_OBJECTS:bitcoin_clientversion>
-  $<TARGET_OBJECTS:bitcoin_crypto>
+  $<TARGET_OBJECTS:kpopcoin_clientversion>
+  $<TARGET_OBJECTS:kpopcoin_crypto>
   $<TARGET_OBJECTS:leveldb>
   $<TARGET_OBJECTS:crc32c>
 )
@@ -91,12 +91,12 @@ if(NOT MSVC)
 endif()
 
 # Also manually apply the warnings to the kernel's internal dependencies
-target_link_libraries(bitcoin_clientversion PRIVATE kernel_warn_interface)
-target_link_libraries(bitcoin_crypto PRIVATE kernel_warn_interface)
+target_link_libraries(kpopcoin_clientversion PRIVATE kernel_warn_interface)
+target_link_libraries(kpopcoin_crypto PRIVATE kernel_warn_interface)
 target_link_libraries(leveldb PRIVATE kernel_warn_interface)
 target_link_libraries(crc32c PRIVATE kernel_warn_interface)
 
-target_link_libraries(bitcoinkernel
+target_link_libraries(kpopcoinkernel
   PRIVATE
     core_interface
     kernel_warn_interface
@@ -106,30 +106,30 @@ target_link_libraries(bitcoinkernel
     Boost::headers
 )
 
-target_include_directories(bitcoinkernel PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/leveldb/include>)
+target_include_directories(kpopcoinkernel PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/leveldb/include>)
 
-# Add a convenience libbitcoinkernel target as a synonym for bitcoinkernel.
-add_custom_target(libbitcoinkernel)
-add_dependencies(libbitcoinkernel bitcoinkernel)
+# Add a convenience libkpopcoinkernel target as a synonym for kpopcoinkernel.
+add_custom_target(libkpopcoinkernel)
+add_dependencies(libkpopcoinkernel kpopcoinkernel)
 
-get_target_property(bitcoinkernel_type bitcoinkernel TYPE)
-if(bitcoinkernel_type STREQUAL "STATIC_LIBRARY")
-  target_compile_definitions(bitcoinkernel PUBLIC BITCOINKERNEL_STATIC)
+get_target_property(kpopcoinkernel_type kpopcoinkernel TYPE)
+if(kpopcoinkernel_type STREQUAL "STATIC_LIBRARY")
+  target_compile_definitions(kpopcoinkernel PUBLIC KPOPCOINKERNEL_STATIC)
 endif()
 
-configure_file(${PROJECT_SOURCE_DIR}/libbitcoinkernel.pc.in ${PROJECT_BINARY_DIR}/libbitcoinkernel.pc @ONLY)
-install(FILES ${PROJECT_BINARY_DIR}/libbitcoinkernel.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" COMPONENT libbitcoinkernel)
+configure_file(${PROJECT_SOURCE_DIR}/libkpopcoinkernel.pc.in ${PROJECT_BINARY_DIR}/libkpopcoinkernel.pc @ONLY)
+install(FILES ${PROJECT_BINARY_DIR}/libkpopcoinkernel.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" COMPONENT libkpopcoinkernel)
 
-install(TARGETS bitcoinkernel
+install(TARGETS kpopcoinkernel
   RUNTIME
     DESTINATION ${CMAKE_INSTALL_BINDIR}
-    COMPONENT libbitcoinkernel
+    COMPONENT libkpopcoinkernel
   LIBRARY
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT libbitcoinkernel
+    COMPONENT libkpopcoinkernel
   ARCHIVE
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT libbitcoinkernel
+    COMPONENT libkpopcoinkernel
 )
 
-install(FILES bitcoinkernel.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT libbitcoinkernel)
+install(FILES kpopcoinkernel.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT libkpopcoinkernel)

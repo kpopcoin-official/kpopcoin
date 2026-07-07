@@ -1,0 +1,33 @@
+# /etc/conf.d/kpopcoind: config file for /etc/init.d/kpopcoind
+
+# Config file location
+#KPOPCOIND_CONFIGFILE="/etc/kpopcoin/kpopcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $KPOPCOIND_USER)
+#KPOPCOIND_PIDDIR="/var/run/kpopcoind"
+
+# What filename to give the pidfile
+#KPOPCOIND_PIDFILE="${KPOPCOIND_PIDDIR}/kpopcoind.pid"
+
+# Where to write kpopcoind data (be mindful that the blockchain is large)
+#KPOPCOIND_DATADIR="/var/lib/kpopcoind"
+
+# User and group to own kpopcoind process
+#KPOPCOIND_USER="kpopcoin"
+#KPOPCOIND_GROUP="kpopcoin"
+
+# Path to kpopcoind executable
+#KPOPCOIND_BIN="/usr/bin/kpopcoind"
+
+# Nice value to run kpopcoind under
+#KPOPCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#KPOPCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for kpopcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+KPOPCOIND_SIGTERM_TIMEOUT=600

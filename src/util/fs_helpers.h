@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-present The Bitcoin Core developers
+// Copyright (c) 2009-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_FS_HELPERS_H
-#define BITCOIN_UTIL_FS_HELPERS_H
+#ifndef KPOPCOIN_UTIL_FS_HELPERS_H
+#define KPOPCOIN_UTIL_FS_HELPERS_H
 
 #include <util/fs.h>
 
@@ -117,4 +117,4 @@ bool IsDirWritable(const fs::path& dir_path);
 fs::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
 #endif
 
-#endif // BITCOIN_UTIL_FS_HELPERS_H
+#endif // KPOPCOIN_UTIL_FS_HELPERS_H

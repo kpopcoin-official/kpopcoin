@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) The Bitcoin Core developers
+# Copyright (c) The Kpopcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the HTTP server basics."""
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import KpopcoinTestFramework
 from test_framework.util import assert_equal, str_to_b64str
 
 import http.client
@@ -19,7 +19,7 @@ MAX_HEADERS_SIZE = 8192
 MAX_SIZE = 0x02000000
 
 
-class BitcoinHTTPConnection:
+class KpopcoinHTTPConnection:
     def __init__(self, node):
         self.url = urllib.parse.urlparse(node.url)
         self.authpair = f'{self.url.username}:{self.url.password}'
@@ -92,7 +92,7 @@ class BitcoinHTTPConnection:
         # The connection is definitely closed.
         assert self.sock_closed()
 
-class HTTPBasicsTest (BitcoinTestFramework):
+class HTTPBasicsTest (KpopcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 
@@ -121,7 +121,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
 
     def check_default_connection(self):
         self.log.info("Checking default HTTP/1.1 connection persistence")
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         # Make request without explicit "Connection" header
         response1 = conn.post('/', '{"method": "getbestblockhash"}').read()
         assert b'"error":null' in response1
@@ -139,7 +139,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
 
     def check_keepalive_connection(self):
         self.log.info("Checking keep-alive connection persistence")
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         # Make request with explicit "Connection: keep-alive" header
         response1 = conn.post('/', '{"method": "getbestblockhash"}', connection_header='keep-alive').read()
         assert b'"error":null' in response1
@@ -157,7 +157,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
 
     def check_close_connection(self):
         self.log.info("Checking close connection after response")
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         # Make request with explicit "Connection: close" header
         response1 = conn.post('/', '{"method": "getbestblockhash"}', connection_header='close').read()
         assert b'"error":null' in response1
@@ -170,12 +170,12 @@ class HTTPBasicsTest (BitcoinTestFramework):
 
         # Large URI plus up to 1000 bytes of default headers
         # added by python's http.client still below total limit.
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         response1 = conn.get(f'/{"x" * (MAX_HEADERS_SIZE - 1000)}')
         assert_equal(response1.status, http.client.NOT_FOUND)
 
         # Excessive URI size plus default headers breaks the limit.
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         response2 = conn.get(f'/{"x" * MAX_HEADERS_SIZE}')
         assert_equal(response2.status, http.client.BAD_REQUEST)
 
@@ -191,14 +191,14 @@ class HTTPBasicsTest (BitcoinTestFramework):
         headers_above_limit += 1000 // header_line_length
 
         # Many small header lines is ok
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         for i in range(headers_below_limit):
             conn.add_header(f"header_{i:04}", "foo")
         response3 = conn.get('/x')
         assert_equal(response3.status, http.client.NOT_FOUND)
 
         # Too many small header lines exceeds total headers size allowed
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         for i in range(headers_above_limit):
             conn.add_header(f"header_{i:04}", "foo")
         response3 = conn.get('/x')
@@ -211,11 +211,11 @@ class HTTPBasicsTest (BitcoinTestFramework):
         bytes_above_limit = MAX_SIZE - base_request_body_size + 2
 
         # Large request body size is ok
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         response4 = conn.post('/', f'{{"jsonrpc": "2.0", "id": "0", "method": "submitblock", "params": ["{"0" * bytes_below_limit}"]}}')
         assert_equal(response4.status, http.client.OK)
 
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         try:
             # Excessive body size is invalid
             conn.post_raw('/', f'{{"jsonrpc": "2.0", "id": "0", "method": "submitblock", "params": ["{"0" * bytes_above_limit}"]}}')
@@ -243,7 +243,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
         """
         self.log.info("Check pipelining")
         tip_height = self.node.getblockcount()
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         conn.set_timeout(5)
 
         # Send two requests in a row.
@@ -277,7 +277,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
 
     def check_chunked_transfer(self):
         self.log.info("Check HTTP request encoded with chunked transfer")
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         headers_chunked = conn.headers.copy()
         headers_chunked.update({"Transfer-encoding": "chunked"})
         body_chunked = [
@@ -298,7 +298,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
         assert b'{"result":"high-hash","error":null}\n' in response1
 
         self.log.info("Check excessive size HTTP request encoded with chunked transfer")
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         headers_chunked = conn.headers.copy()
         headers_chunked.update({"Transfer-encoding": "chunked"})
         body_chunked = [
@@ -344,7 +344,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
         # Copied from http_incomplete_test_() in regress_http.c in libevent.
         # A complete request would have an additional "\r\n" at the end.
         bad_http_request = "GET /test1 HTTP/1.1\r\nHost: somehost\r\n"
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         conn.conn.sock.sendall(bad_http_request.encode("ascii"))
 
         conn.expect_timeout(RPCSERVERTIMEOUT)
@@ -366,7 +366,7 @@ class HTTPBasicsTest (BitcoinTestFramework):
         self.restart_node(0, extra_args=[f"-rpcservertimeout={RPCSERVERTIMEOUT}"])
 
         tip_height = self.node.getblockcount()
-        conn = BitcoinHTTPConnection(self.node)
+        conn = KpopcoinHTTPConnection(self.node)
         conn.post_raw('/', f'{{"method": "waitforblockheight", "params": [{tip_height + 1}]}}')
 
         # Wait until after the timeout, then generate a block with a second HTTP connection

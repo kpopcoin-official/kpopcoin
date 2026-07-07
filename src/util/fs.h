@@ -1,9 +1,9 @@
-// Copyright (c) 2017-present The Bitcoin Core developers
+// Copyright (c) 2017-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_UTIL_FS_H
-#define BITCOIN_UTIL_FS_H
+#ifndef KPOPCOIN_UTIL_FS_H
+#define KPOPCOIN_UTIL_FS_H
 
 // IWYU incorrectly suggests removing this header.
 // See https://github.com/include-what-you-use/include-what-you-use/issues/1931.
@@ -236,4 +236,4 @@ template<> inline void formatValue(std::ostream&, const char*, const char*, int,
 template<> inline void formatValue(std::ostream&, const char*, const char*, int, const fs::path&) = delete;
 } // namespace tinyformat
 
-#endif // BITCOIN_UTIL_FS_H
+#endif // KPOPCOIN_UTIL_FS_H

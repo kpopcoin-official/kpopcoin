@@ -1,9 +1,9 @@
-// Copyright (c) 2021-present The Bitcoin Core developers
+// Copyright (c) 2021-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_TEST_UTIL_H
-#define BITCOIN_WALLET_TEST_UTIL_H
+#ifndef KPOPCOIN_WALLET_TEST_UTIL_H
+#define KPOPCOIN_WALLET_TEST_UTIL_H
 
 #include <addresstype.h>
 #include <wallet/db.h>
@@ -75,4 +75,4 @@ MockableSQLiteDatabase& GetMockableDatabase(CWallet& wallet);
 DescriptorScriptPubKeyMan* CreateDescriptor(CWallet& keystore, const std::string& desc_str, bool success);
 } // namespace wallet
 
-#endif // BITCOIN_WALLET_TEST_UTIL_H
+#endif // KPOPCOIN_WALLET_TEST_UTIL_H

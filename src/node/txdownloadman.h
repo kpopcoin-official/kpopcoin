@@ -1,9 +1,9 @@
-// Copyright (c) 2024-present The Bitcoin Core developers
+// Copyright (c) 2024-present The Kpopcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_TXDOWNLOADMAN_H
-#define BITCOIN_NODE_TXDOWNLOADMAN_H
+#ifndef KPOPCOIN_NODE_TXDOWNLOADMAN_H
+#define KPOPCOIN_NODE_TXDOWNLOADMAN_H
 
 #include <net.h>
 #include <node/txorphanage.h>
@@ -173,4 +173,4 @@ public:
     std::vector<TxOrphanage::OrphanInfo> GetOrphanTransactions() const;
 };
 } // namespace node
-#endif // BITCOIN_NODE_TXDOWNLOADMAN_H
+#endif // KPOPCOIN_NODE_TXDOWNLOADMAN_H
