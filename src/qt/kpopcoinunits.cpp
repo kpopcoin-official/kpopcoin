@@ -31,10 +31,10 @@ QList<KpopcoinUnit> KpopcoinUnits::availableUnits()
 QString KpopcoinUnits::longName(Unit unit)
 {
     switch (unit) {
-    case Unit::BTC: return QString("BTC");
-    case Unit::mBTC: return QString("mBTC");
-    case Unit::uBTC: return QString::fromUtf8("µBTC (bits)");
-    case Unit::SAT: return QString("Satoshi (sat)");
+    case Unit::BTC: return QString("KPC");
+    case Unit::mBTC: return QString("mKPC");
+    case Unit::uBTC: return QString::fromUtf8("µKPC (kpcs)");
+    case Unit::SAT: return QString("DOA (doa)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -44,8 +44,8 @@ QString KpopcoinUnits::shortName(Unit unit)
     switch (unit) {
     case Unit::BTC: return longName(unit);
     case Unit::mBTC: return longName(unit);
-    case Unit::uBTC: return QString("bits");
-    case Unit::SAT: return QString("sat");
+    case Unit::uBTC: return QString("kpcs");
+    case Unit::SAT: return QString("doa");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }

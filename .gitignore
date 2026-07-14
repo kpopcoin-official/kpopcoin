@@ -1,3 +1,47 @@
 build/
 build_fuzz/
 *.tar.gz
+# 1. 윈도우 빌드 관련 폴더 및 파일 (Visual Studio / MinGW 등)
+.vs/
+Debug/
+Release/
+x64/
+x86/
+bin/
+obj/
+out/
+build/
+*.pdb
+*.ilk
+
+# 2. 실행 파일 및 라이브러리 (윈도우 & 리눅스)
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# 3. Kpopcoin 특정 실행 파일들 (확장자가 없는 리눅스용)
+kpopcoind
+kpopcoin-cli
+kpopcoin-tx
+kpopcoin-qt
+minerd
+
+# 4. 빌드 시스템 임시 파일 (Make, Autotools 등)
+Makefile
+Makefile.in
+.deps/
+.libs/
+autom4te.cache/
+config.log
+config.status
+
+# 5. OS 생성 임시 파일
+Thumbs.db
+.DS_Store
+build-windows/
+*.zip

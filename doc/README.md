@@ -5,7 +5,7 @@ Setup
 ---------------------
 Kpopcoin Core is the original Kpopcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Kpopcoin transactions, which requires several hundred gigabytes or more of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to several days or more.
 
-To download Kpopcoin Core, visit [kpopcoincore.org](https://kpopcoincore.org/en/download/).
+To download Kpopcoin Core, visit [https://github.com/kpopcoin-official/kpopcoin](https://github.com/kpopcoin-official/kpopcoin).
 
 Running
 ---------------------

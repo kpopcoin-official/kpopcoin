@@ -49,7 +49,7 @@ winget install python3
 Clone the Kpopcoin Core repository to a directory. All build scripts and commands will run from this directory.
 
 ```powershell
-git clone https://github.com/kpopcoin/kpopcoin.git
+git clone https://github.com/kpopcoin-official/kpopcoin.git
 ```
 
 

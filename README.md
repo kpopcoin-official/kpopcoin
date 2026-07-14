@@ -1,5 +1,3 @@
-**The genesis block mining for Kpopcoin will officially begin on Tue Jun 30 2026 02:00:00 UTC.**
-
 **License**
 This project is based on Bitcoin Core and is released under the MIT License. 
 Copyright (c) 2009-2026 Bitcoin Core Developers.
@@ -7,7 +5,7 @@ Copyright (c) 2026 Kpopcoin.
 
 source file:https://github.com/kpopcoin-official/kpopcoin
 
-**The genesis block mining for Kpopcoin will officially begin on Tue Jun 30 2026 02:00:00 UTC.**
+**The genesis block mining for Kpopcoin officially began on Tuesday, June 30, 2026, at 02:00 UTC.**
 ### **Kpopcoin (KPC) Overview**
 
 Kpopcoin is a digital currency derived from **Bitcoin Core (v31.99.0-3704fcff5830-dirty)**. All core commands and operations are identical to standard Bitcoin protocols.
